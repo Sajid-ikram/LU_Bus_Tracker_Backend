@@ -1,33 +1,37 @@
-let Location = require('../Models/location_model');
+let Routine = require('../Models/routine_model');
 
 
-// const getAllNotice = async (req, res) => {
-//     const LIMIT = 8;
-//     const skip = req.query.skip ? Number(req.query.skip) : 0;
-//     try {
-//         const notice = await Notice.find().sort({ createdOn: -1 }).skip(skip).limit(LIMIT);
-//         res.status(200).json(notice);
+const getRoutine = async (req, res) => {
 
-//     } catch (error) {
-//         req.status(500).send(error.message);
-//     }
-// }
-
-
-
-const createLocation = async (req, res) => {
     try {
-        const newLocation = Location({
+        const type = req.query.type ? req.query.type : "0";
+ 
+        if(type != "0"){
+            const routine = await Routine.find({type : type});
+            res.status(200).json(routine);
+        }else{
+            res.status(200).json("please provide type");
+        }
+        
 
-            id: req.body.id,
-            latitude: req.body.latitude,
-            longitude: req.body.longitude,
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
 
 
+
+const createRoutine = async (req, res) => {
+    try {
+        const newRoutine = Routine({
+
+            type: req.body.type,
+            routineUrl: req.body.routineUrl,
+ 
         });
 
-        await newLocation.save();
-        res.status(201).json(newLocation);
+        await newRoutine.save();
+        res.status(201).json(newRoutine);
 
     } catch (error) {
         req.status(500).send(error.message);
@@ -65,4 +69,4 @@ const createLocation = async (req, res) => {
 //     }
 // };
 
-module.exports = { createLocation} 
+module.exports = { createRoutine, getRoutine } 

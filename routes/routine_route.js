@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { createLocation } = require('../controllers/location_controller');
+const { createRoutine, getRoutine } = require('../controllers/routine_controller');
 
 
 
-router.post("/", createLocation)
+router.post("/", createRoutine)
 // router.post("/", createNotice)
-// router.put("/:id", updateNotice)
+router.get("/", getRoutine)
 // router.delete("/:id", deleteNotice)
 
 

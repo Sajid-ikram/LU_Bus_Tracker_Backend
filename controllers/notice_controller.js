@@ -9,7 +9,7 @@ const getAllNotice = async (req, res) => {
         res.status(200).json(notice);
 
     } catch (error) {
-        req.status(500).send(error.message);
+        res.status(500).send(error.message);
     }
 }
 
@@ -23,14 +23,14 @@ const createNotice = async (req, res) => {
             description: req.body.description,
             imageUrl: req.body.imageUrl, 
 
- 
+
         });
 
         await newNotice.save();
         res.status(201).json(newNotice);
 
     } catch (error) {
-        req.status(500).send(error.message);
+        res.status(500).send(error.message);
     }
 };
 
@@ -47,7 +47,7 @@ const updateNotice = async (req, res) => {
         res.status(200).json(notice);
 
     } catch (error) {
-        req.status(500).send(error.message);
+        res.status(500).send(error.message);
     }
 };
 
@@ -61,7 +61,7 @@ const deleteNotice = async (req, res) => {
         res.status(200).json({ message: "Notice is deleted" });
 
     } catch (error) {
-        req.status(500).send(error.message);
+        res.status(500).send(error.message);
     }
 };
 

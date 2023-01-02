@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const notices = require('./routes/notice_route');
-const location = require('./routes/location_route');
+const routine = require('./routes/routine_route');
+const assignedBus = require('./routes/assigned_bus_route');
 const cors = require('cors');
 
 const app = express();
@@ -25,8 +26,10 @@ require('./config/db')
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use("/map", socketRouter);
+
 app.use("/notice",notices);
-app.use("/location",location);
+app.use("/routine", routine);
+app.use("/assignedBus", assignedBus);
 
 
 app.get("/", (req, res)=>{
