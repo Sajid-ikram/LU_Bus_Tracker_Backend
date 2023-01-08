@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getAllNotice, createNotice, updateNotice, deleteNotice} = require('../Controllers/notice_controller');
+const { getAllNotice, createNotice, updateNotice, deleteNotice} = require('../controllers/notice_controller');
 
 
 router.get("/", getAllNotice)
