@@ -1,4 +1,4 @@
-let AssignedBus = require('../Models/assigned_bus_model');
+let AssignedBus = require('../models/assigned_bus_model');
 
 
 

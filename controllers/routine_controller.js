@@ -1,4 +1,4 @@
-let Routine = require('../Models/routine_model');
+let Routine = require('../models/routine_model');
 
 
 const getRoutine = async (req, res) => {

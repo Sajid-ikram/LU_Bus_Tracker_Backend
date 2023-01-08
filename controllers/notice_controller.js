@@ -1,4 +1,4 @@
-let Notice = require('../Models/notice_model');
+let Notice = require('../models/notice_model');
 
 
 const getAllNotice = async (req, res) => {
