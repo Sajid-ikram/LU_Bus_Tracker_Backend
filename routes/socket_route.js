@@ -7,11 +7,13 @@ function SocketRouter(io) {
     const id = req.body.id;
     const latitude = req.body.latitude;
     const longitude = req.body.longitude;
+    const route = req.body.route;
+    const availableSeat = req.body.availableSeat;
 
-    if (!id || !latitude || !longitude) {
+    if (!id || !latitude || !longitude || !route || !availableSeat) {
       res
         .json({
-          message: "Require all three parameters",
+          message: "Require all parameters",
         })
         .status(401);
     }
@@ -20,6 +22,8 @@ function SocketRouter(io) {
       id: id,
       latitude: latitude,
       longitude: longitude,
+      route : route,
+      availableSeat : availableSeat
     });
 
     //io.emit("locationChange", "working");

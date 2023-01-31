@@ -39,11 +39,12 @@ const createNotice = async (req, res) => {
 const updateNotice = async (req, res) => {
 
     try {
-        const notice = await Notice.findOne({ _id: req.params.id });
+        
+        const notice = await Notice.findOne({ _id: req.query.id });
         notice.name = req.body.name;
         notice.description = req.body.description,
-            notice.imageUrl = req.body.imageUrl,
-            await notice.save();
+        notice.imageUrl = req.body.imageUrl,
+        await notice.save();
         res.status(200).json(notice);
 
     } catch (error) {
@@ -57,7 +58,7 @@ const updateNotice = async (req, res) => {
 //delete user
 const deleteNotice = async (req, res) => {
     try {
-        await Notice.deleteOne({ _id: req.params.id });
+        await Notice.deleteOne({ _id: req.query.id });
         res.status(200).json({ message: "Notice is deleted" });
 
     } catch (error) {

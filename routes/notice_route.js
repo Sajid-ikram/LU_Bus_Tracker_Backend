@@ -4,8 +4,8 @@ const { getAllNotice, createNotice, updateNotice, deleteNotice} = require('../co
 
 router.get("/", getAllNotice)
 router.post("/", createNotice)
-router.put("/:id", updateNotice)
-router.delete("/:id", deleteNotice)
+router.put("/", updateNotice)
+router.delete("/", deleteNotice)
 
 
 module.exports = router;
