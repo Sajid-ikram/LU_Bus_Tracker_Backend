@@ -39,34 +39,5 @@ const createRoutine = async (req, res) => {
 };
 
 
-// // update user
-// const updateNotice = async (req, res) => {
-
-//     try {
-//         const notice = await Notice.findOne({ _id: req.params.id });
-//         notice.name = req.body.name;
-//         notice.description = req.body.description,
-//             notice.imageUrl = req.body.imageUrl,
-//             await notice.save();
-//         res.status(200).json(notice);
-
-//     } catch (error) {
-//         req.status(500).send(error.message);
-//     }
-// };
-
-
-
-
-// //delete user
-// const deleteNotice = async (req, res) => {
-//     try {
-//         await Notice.deleteOne({ _id: req.params.id });
-//         res.status(200).json({ message: "Notice is deleted" });
-
-//     } catch (error) {
-//         req.status(500).send(error.message);
-//     }
-// };
 
 module.exports = { createRoutine, getRoutine } 

@@ -1,36 +1,28 @@
 const express = require("express");
+let locationSchema = require('../models/location_model');
 
 function SocketRouter(io) {
   const router = express.Router();
 
   router.post("/changeLocation", (req, res) => {
-    const id = req.body.id;
-    const latitude = req.body.latitude;
-    const longitude = req.body.longitude;
-    const route = req.body.route;
-    const availableSeat = req.body.availableSeat;
 
-    if (!id || !latitude || !longitude || !route || !availableSeat) {
-      res
-        .json({
-          message: "Require all parameters",
-        })
+
+    const result = locationSchema.validate(req.body);
+
+    if (result.error) {
+
+      return res.json({
+        message: "Invalid Request",
+        error: result.error.details
+      })
         .status(401);
     }
 
-    io.emit("locationChange", {
-      id: id,
-      latitude: latitude,
-      longitude: longitude,
-      route : route,
-      availableSeat : availableSeat
-    });
+    io.emit("locationChange", result.value);
 
-    //io.emit("locationChange", "working");
-
-    console.log(id);
-    res.json({
-      message: "data delivered",    });
+    return res.json({
+      message: "data delivered",
+    }).status(200);
 
   });
 

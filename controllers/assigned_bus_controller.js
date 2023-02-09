@@ -38,7 +38,6 @@ const getAssignedBusses = async (req, res) => {
 
 const deleteAssignedBusses = async (req, res) => {
     try {
-        console.log( req.query.busNumber);
         await AssignedBus.deleteOne({ busNumber: req.query.busNumber });
         res.status(200).json({ message: "Removed" });
 
